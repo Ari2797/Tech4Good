@@ -181,7 +181,13 @@
             cursor: pointer;
         }
 
-        /* Header Logo Images */
+        /* Header Logo Images - Top Left */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .header-logos {
             display: flex;
             gap: 15px;
@@ -807,10 +813,18 @@
     <!-- Header -->
     <header id="main-header" class="hidden">
         <div class="container header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <span>Tech4Good</span>
-            </a>
+            <!-- Header Logo Images - Top Left -->
+            <div class="header-left">
+                <div class="header-logos">
+                    <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 1" class="header-logo">
+                    <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 2" class="header-logo">
+                </div>
+                
+                <a href="#" class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Tech4Good</span>
+                </a>
+            </div>
             
             <nav>
                 <ul id="navMenu">
@@ -828,12 +842,6 @@
                     <li><a href="#" id="logoutBtn" class="btn btn-secondary">Logout</a></li>
                 </ul>
             </nav>
-            
-            <!-- Header Logo Images -->
-            <div class="header-logos">
-                <img src="https://drive.google.com/uc?export=view&id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 1" class="header-logo">
-                <img src="https://drive.google.com/uc?export=view&id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 2" class="header-logo">
-            </div>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
