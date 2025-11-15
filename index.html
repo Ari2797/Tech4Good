@@ -206,23 +206,6 @@
             z-index: 1;
         }
 
-        /* Simple Logo Styles */
-        .hero-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero-logo {
-            height: 60px;
-            width: auto;
-            max-width: 180px;
-            object-fit: contain;
-        }
-
         .hero h1 {
             margin-bottom: 1.5rem;
         }
@@ -453,16 +436,26 @@
 
         .footer-links li {
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
 
         .footer-links a {
             color: var(--text-secondary);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover {
             color: var(--primary-blue);
             padding-left: 5px;
+        }
+
+        .footer-links i {
+            width: 20px;
+            text-align: center;
         }
 
         .social-links {
@@ -484,8 +477,23 @@
         }
 
         .social-links a:hover {
-            background-color: var(--primary-blue);
             transform: translateY(-3px);
+        }
+
+        .social-fb:hover {
+            background-color: #1877F2;
+        }
+
+        .social-twitter:hover {
+            background-color: #1DA1F2;
+        }
+
+        .social-ig:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-tiktok:hover {
+            background-color: #000000;
         }
 
         .footer-bottom {
@@ -770,15 +778,6 @@
                 font-size: 2rem;
             }
             
-            .hero-logos {
-                gap: 20px;
-            }
-            
-            .hero-logo {
-                height: 50px;
-                max-width: 150px;
-            }
-            
             .hero-buttons {
                 justify-content: center;
             }
@@ -804,15 +803,6 @@
             .btn {
                 padding: 10px 20px;
                 width: 100%;
-            }
-            
-            .hero-logos {
-                gap: 15px;
-            }
-            
-            .hero-logo {
-                height: 40px;
-                max-width: 120px;
             }
             
             .hero-buttons {
@@ -988,12 +978,6 @@
         <section class="hero" id="home">
             <div class="container">
                 <div class="hero-content">
-                    <!-- Simple Logos Above Heading -->
-                    <div class="hero-logos">
-                        <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 1" class="hero-logo">
-                        <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 2" class="hero-logo">
-                    </div>
-                    
                     <h1>Empowering Digital Literacy & Safe Internet Use</h1>
                     <p>Tech4Good focuses on empowering students and the community to use technology responsibly and effectively. We promote digital literacy, cybersecurity awareness, and ethical use of online platforms.</p>
                     <div class="hero-buttons">
@@ -1176,42 +1160,41 @@
                         <h3>Tech4Good</h3>
                         <p>Empowering students and the community to use technology responsibly and effectively.</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-ig"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-tiktok"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#features">Our Mission</a></li>
-                            <li><a href="#learning">Learning Paths</a></li>
-                            <li><a href="#resources">Resources</a></li>
-                            <li><a href="#dashboard">Dashboard</a></li>
+                            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="#features"><i class="fas fa-bullseye"></i> Our Mission</a></li>
+                            <li><a href="#learning"><i class="fas fa-graduation-cap"></i> Learning Paths</a></li>
+                            <li><a href="#resources"><i class="fas fa-book"></i> Resources</a></li>
+                            <li><a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Resources</h3>
                         <ul class="footer-links">
-                            <li><a href="DigitalLiteracy.html">Digital Literacy Guides</a></li>
-                            <li><a href="CyberSecAwareness.html">Cybersecurity Checklists</a></li>
-                            <li><a href="EthicBehavior.html">Ethical Behavior Resources</a></li>
-                            <li><a href="#">Research & Reports</a></li>
-                            <li><a href="#">Community Forum</a></li>
+                            <li><a href="DigitalLiteracy.html"><i class="fas fa-laptop-code"></i> Digital Literacy Guides</a></li>
+                            <li><a href="CyberSecAwareness.html"><i class="fas fa-shield-alt"></i> Cybersecurity Checklists</a></li>
+                            <li><a href="EthicBehavior.html"><i class="fas fa-balance-scale"></i> Ethical Behavior Resources</a></li>
+                            <li><a href="#"><i class="fas fa-chart-bar"></i> Research & Reports</a></li>
+                            <li><a href="#"><i class="fas fa-users"></i> Community Forum</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-column">
                         <h3>Contact Us</h3>
                         <ul class="footer-links">
-                            <li><i class="fas fa-envelope"></i> info@tech4good.org</li>
-                            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                            <li><i class="fas fa-map-marker-alt"></i> 123 Digital Street, Tech City</li>
+                            <li><a href="mailto:info@tech4good.org"><i class="fas fa-envelope"></i> info@tech4good.org</a></li>
+                            <li><a href="tel:+6074537000"><i class="fas fa-phone"></i> +60 7-453 7000</a></li>
+                            <li><a href="https://maps.google.com/?q=Universiti Tun Hussein Onn Malaysia" target="_blank"><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</a></li>
                         </ul>
                     </div>
                 </div>
