@@ -183,7 +183,7 @@
 
         /* Hero Section */
         .hero {
-            padding-top: 140px; /* Reduced to accommodate logos */
+            padding-top: 180px;
             padding-bottom: 100px;
             background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
             position: relative;
@@ -198,6 +198,12 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Hero Logos */
@@ -223,12 +229,6 @@
         .hero-logo:hover {
             opacity: 1;
             transform: translateY(-2px);
-        }
-
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 1;
         }
 
         .hero h1 {
@@ -995,13 +995,13 @@
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="container">
-                <!-- Hero Logos -->
-                <div class="hero-logos">
-                    <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 1" class="hero-logo">
-                    <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 2" class="hero-logo">
-                </div>
-                
                 <div class="hero-content">
+                    <!-- Logos placed here, above the heading -->
+                    <div class="hero-logos">
+                        <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 1" class="hero-logo">
+                        <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 2" class="hero-logo">
+                    </div>
+                    
                     <h1>Empowering Digital Literacy & Safe Internet Use</h1>
                     <p>Tech4Good focuses on empowering students and the community to use technology responsibly and effectively. We promote digital literacy, cybersecurity awareness, and ethical use of online platforms.</p>
                     <div class="hero-buttons">
