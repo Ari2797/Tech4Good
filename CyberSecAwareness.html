@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity Awareness - Tech4Good</title>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base Styles & Variables */
         :root {
@@ -528,16 +530,26 @@
 
         .footer-links li {
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
 
         .footer-links a {
             color: var(--text-secondary);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover {
             color: var(--primary-blue);
             padding-left: 5px;
+        }
+
+        .footer-links i {
+            width: 20px;
+            text-align: center;
         }
 
         .social-links {
@@ -1012,31 +1024,31 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="digital-literacy.html">Digital Literacy</a></li>
-                        <li><a href="index.html#learning">Learning Paths</a></li>
-                        <li><a href="index.html#resources">Resources</a></li>
-                        <li><a href="index.html#events">Events</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="digital-literacy.html"><i class="fas fa-laptop-code"></i> Digital Literacy</a></li>
+                        <li><a href="index.html#learning"><i class="fas fa-graduation-cap"></i> Learning Paths</a></li>
+                        <li><a href="index.html#resources"><i class="fas fa-book"></i> Resources</a></li>
+                        <li><a href="index.html#events"><i class="fas fa-calendar-alt"></i> Events</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Security Best Practices</a></li>
-                        <li><a href="#">Threat Identification Guide</a></li>
-                        <li><a href="#">Password Management Tools</a></li>
-                        <li><a href="#">Privacy Protection Tips</a></li>
-                        <li><a href="#">Security Tools & Software</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Security Best Practices</a></li>
+                        <li><a href="#"><i class="fas fa-bug"></i> Threat Identification Guide</a></li>
+                        <li><a href="#"><i class="fas fa-key"></i> Password Management Tools</a></li>
+                        <li><a href="#"><i class="fas fa-user-secret"></i> Privacy Protection Tips</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> Security Tools & Software</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> info@tech4good.org</li>
-                        <li><i class="fas fa-phone"></i> +60 7-453 7000</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</li>
+                        <li><a href="mailto:info@tech4good.org"><i class="fas fa-envelope"></i> info@tech4good.org</a></li>
+                        <li><a href="tel:+6074537000"><i class="fas fa-phone"></i> +60 7-453 7000</a></li>
+                        <li><a href="https://maps.google.com/?q=Universiti Tun Hussein Onn Malaysia" target="_blank"><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</a></li>
                     </ul>
                 </div>
             </div>
