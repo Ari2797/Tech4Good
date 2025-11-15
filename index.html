@@ -181,28 +181,9 @@
             cursor: pointer;
         }
 
-        /* Header Logo Images - Top Left */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .header-logos {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .header-logo {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-        }
-
         /* Hero Section */
         .hero {
-            padding-top: 180px;
+            padding-top: 140px; /* Reduced to accommodate logos */
             padding-bottom: 100px;
             background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
             position: relative;
@@ -217,6 +198,31 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        /* Hero Logos */
+        .hero-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-logo {
+            height: 60px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* Makes logos white to match dark theme */
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 1;
+            transform: translateY(-2px);
         }
 
         .hero-content {
@@ -772,16 +778,21 @@
                 font-size: 2rem;
             }
             
+            .hero-logos {
+                gap: 20px;
+            }
+            
+            .hero-logo {
+                height: 50px;
+                max-width: 150px;
+            }
+            
             .hero-buttons {
                 justify-content: center;
             }
             
             .auth-container {
                 padding: 30px 20px;
-            }
-            
-            .header-logos {
-                display: none;
             }
         }
 
@@ -803,6 +814,15 @@
                 width: 100%;
             }
             
+            .hero-logos {
+                gap: 15px;
+            }
+            
+            .hero-logo {
+                height: 40px;
+                max-width: 120px;
+            }
+            
             .hero-buttons {
                 flex-direction: column;
             }
@@ -813,18 +833,14 @@
     <!-- Header -->
     <header id="main-header" class="hidden">
         <div class="container header-container">
-            <!-- Header Logo Images - Top Left -->
-            <div class="header-left">
-                <div class="header-logos">
-                    <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 1" class="header-logo">
-                    <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 2" class="header-logo">
-                </div>
-                
-                <a href="#" class="logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Tech4Good</span>
-                </a>
-            </div>
+            <a href="#" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Tech4Good</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
             
             <nav>
                 <ul id="navMenu">
@@ -842,10 +858,6 @@
                     <li><a href="#" id="logoutBtn" class="btn btn-secondary">Logout</a></li>
                 </ul>
             </nav>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </header>
 
@@ -983,6 +995,12 @@
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="container">
+                <!-- Hero Logos -->
+                <div class="hero-logos">
+                    <img src="https://drive.google.com/thumbnail?id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Partner Logo 1" class="hero-logo">
+                    <img src="https://drive.google.com/thumbnail?id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Partner Logo 2" class="hero-logo">
+                </div>
+                
                 <div class="hero-content">
                     <h1>Empowering Digital Literacy & Safe Internet Use</h1>
                     <p>Tech4Good focuses on empowering students and the community to use technology responsibly and effectively. We promote digital literacy, cybersecurity awareness, and ethical use of online platforms.</p>
