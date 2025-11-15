@@ -126,17 +126,28 @@
             padding: 20px 0;
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-images {
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
             font-size: 1.8rem;
             font-weight: 700;
             color: white;
-        }
-
-        .logo i {
-            color: var(--primary-blue);
         }
 
         nav ul {
@@ -671,6 +682,22 @@
             .hero-buttons {
                 flex-direction: column;
             }
+            
+            .logo-container {
+                gap: 10px;
+            }
+            
+            .logo-images {
+                gap: 5px;
+            }
+            
+            .logo-img {
+                height: 30px;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
@@ -678,10 +705,15 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <span>Tech4Good</span>
-            </a>
+            <div class="logo-container">
+                <div class="logo-images">
+                    <img src="https://drive.google.com/uc?export=view&id=1OQqeTWFccUldSt3cXC3Tjnlv2FO3HFW5" alt="Logo 1" class="logo-img">
+                    <img src="https://drive.google.com/uc?export=view&id=1aMC0n8zYuCOjFnkodsqnQN6xNFhDOfKs" alt="Logo 2" class="logo-img">
+                </div>
+                <a href="index.html" class="logo-text">
+                    <span>Tech4Good</span>
+                </a>
+            </div>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
