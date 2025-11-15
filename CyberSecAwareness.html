@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Awareness - Tech4Good</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-blue: #3B82F6;
+            --learning-teal: #14B8A6;
+            --safety-green: #10B981;
+            --warning-amber: #F59E0B;
+            --alert-red: #EF4444;
+            --dark-bg: #0A0A0A;
+            --darker-bg: #050505;
+            --card-bg: #1A1A1A;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-blue);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: var(--darker-bg);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .content-text {
+            padding-right: 20px;
+        }
+
+        .content-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Interactive Features */
+        .interactive-section {
+            background-color: var(--dark-bg);
+        }
+
+        .interactive-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-container {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-option.selected {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid var(--safety-green);
+        }
+
+        .checklist {
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .checklist-item input {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .checklist-item.completed {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--safety-green);
+        }
+
+        .threat-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .threat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .threat-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .threat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .icon-red {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--alert-red);
+        }
+
+        .icon-amber {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning-amber);
+        }
+
+        .icon-blue {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .progress-container {
+            margin: 40px 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Registration CTA */
+        .registration-cta {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #111 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .registration-cta h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .registration-cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-fb:hover {
+            background-color: #1877F2;
+        }
+
+        .social-twitter:hover {
+            background-color: #1DA1F2;
+        }
+
+        .social-ig:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-tiktok:hover {
+            background-color: #000000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Tech4Good</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="digital-literacy.html">Digital Literacy</a></li>
+                    <li><a href="index.html#learning">Learning Paths</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#contact" class="btn btn-secondary">Get Involved</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cybersecurity Awareness</h1>
+                <p>Protect yourself, your data, and your digital identity in an increasingly connected world. Learn essential cybersecurity practices to stay safe online.</p>
+                <div class="hero-buttons">
+                    <a href="#interactive" class="btn btn-primary">Test Your Knowledge</a>
+                    <a href="#registration" class="btn btn-secondary">Get Security Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Cybersecurity Awareness -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What is Cybersecurity Awareness?</h2>
+                <p>Understanding the importance of protecting your digital presence</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <h3>More Than Just Strong Passwords</h3>
+                    <p>Cybersecurity awareness is the understanding of potential cyber threats and the knowledge of how to protect yourself and your organization from these threats. It involves recognizing risks and taking appropriate actions to prevent security breaches.</p>
+                    <p>In today's digital age, cybersecurity is everyone's responsibility. From individuals to large organizations, understanding basic security principles is essential for protecting sensitive information.</p>
+                    <p>Cyber threats continue to evolve, making continuous education and awareness crucial for maintaining digital safety.</p>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cybersecurity concept">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Threats -->
+    <section class="content-section" style="background-color: var(--dark-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Common Cyber Threats</h2>
+                <p>Understanding the risks is the first step toward protection</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Online security illustration">
+                </div>
+                <div class="content-text">
+                    <h3>Recognizing Digital Dangers</h3>
+                    
+                    <div class="threat-card">
+                        <div class="threat-header">
+                            <div class="threat-icon icon-red">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h4>Phishing Attacks</h4>
+                        </div>
+                        <p>Fraudulent attempts to obtain sensitive information by disguising as a trustworthy entity in electronic communication.</p>
+                    </div>
+                    
+                    <div class="threat-card">
+                        <div class="threat-header">
+                            <div class="threat-icon icon-amber">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Ransomware</h4>
+                        </div>
+                        <p>Malicious software that blocks access to a computer system until a sum of money is paid.</p>
+                    </div>
+                    
+                    <div class="threat-card">
+                        <div class="threat-header">
+                            <div class="threat-icon icon-blue">
+                                <i class="fas fa-id-badge"></i>
+                            </div>
+                            <h4>Identity Theft</h4>
+                        </div>
+                        <p>The fraudulent acquisition and use of a person's private identifying information, usually for financial gain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="interactive-section" id="interactive">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Security Assessment</h2>
+                <p>Test your knowledge and evaluate your security practices</p>
+            </div>
+            
+            <div class="interactive-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="quiz">Security Quiz</div>
+                    <div class="tab" data-tab="checklist">Security Checklist</div>
+                    <div class="tab" data-tab="progress">Your Security Score</div>
+                </div>
+                
+                <div class="tab-content active" id="quiz-tab">
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="question">What is the most secure way to create and manage passwords?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Use the same password for all accounts but make it complex</div>
+                            <div class="quiz-option" data-correct="true">Use a password manager to generate and store unique passwords</div>
+                            <div class="quiz-option" data-correct="false">Write passwords down in a notebook kept near your computer</div>
+                            <div class="quiz-option" data-correct="false">Use personal information like birthdates that are easy to remember</div>
+                        </div>
+                        <button class="btn btn-primary" id="check-answer">Check Answer</button>
+                        <div class="quiz-result" id="quiz-result">
+                            <h3>Correct!</h3>
+                            <p>Password managers are the most secure option as they generate strong, unique passwords for each account and store them encrypted. This eliminates the need to remember multiple passwords while maintaining high security.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="checklist-tab">
+                    <div class="quiz-container">
+                        <h3>Essential Cybersecurity Practices</h3>
+                        <p>Check off the security measures you currently practice:</p>
+                        
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice1">
+                                <label for="practice1">Use unique passwords for different accounts</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice2">
+                                <label for="practice2">Enable two-factor authentication where available</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice3">
+                                <label for="practice3">Regularly update software and applications</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice4">
+                                <label for="practice4">Back up important data regularly</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice5">
+                                <label for="practice5">Recognize and avoid phishing attempts</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="practice6">
+                                <label for="practice6">Use a VPN on public Wi-Fi networks</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="save-checklist">Save Your Progress</button>
+                        <div class="quiz-result" id="checklist-result" style="display: none;">
+                            <h3>Checklist Saved!</h3>
+                            <p>Great job on implementing these security practices. Continue working on unchecked items to improve your cybersecurity posture.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="progress-tab">
+                    <div class="progress-container">
+                        <h3>Your Cybersecurity Awareness Score</h3>
+                        <p>Track how you're progressing in developing essential cybersecurity habits.</p>
+                        
+                        <div class="progress-item">
+                            <p>Password Security</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="password-progress" style="width: 40%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Basic</span>
+                                <span>40%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Threat Recognition</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="threat-progress" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Basic</span>
+                                <span>65%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Data Protection</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="data-progress" style="width: 30%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Basic</span>
+                                <span>30%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="update-progress">Update Security Score</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration CTA -->
+    <section class="registration-cta" id="registration">
+        <div class="container">
+            <h2>Want to Enhance Your Cybersecurity Knowledge?</h2>
+            <p>Register to access our complete Cybersecurity Awareness resources, including threat detection guides, security best practices, and interactive simulations.</p>
+            <button class="btn btn-primary" id="register-btn">Register for Security Resources</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tech4Good</h3>
+                    <p>Empowering students and the community to use technology responsibly and effectively.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-ig"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-tiktok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="digital-literacy.html">Digital Literacy</a></li>
+                        <li><a href="index.html#learning">Learning Paths</a></li>
+                        <li><a href="index.html#resources">Resources</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Security Best Practices</a></li>
+                        <li><a href="#">Threat Identification Guide</a></li>
+                        <li><a href="#">Password Management Tools</a></li>
+                        <li><a href="#">Privacy Protection Tips</a></li>
+                        <li><a href="#">Security Tools & Software</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@tech4good.org</li>
+                        <li><i class="fas fa-phone"></i> +60 7-453 7000</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Tech4Good. All rights reserved. | Promoting Digital Literacy and Safe Internet Use</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3 class="form-title">Register for Cybersecurity Resources</h3>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Primary Security Interest</label>
+                    <select id="interest" class="form-control" required>
+                        <option value="">Select your interest</option>
+                        <option value="personal-security">Personal Cybersecurity</option>
+                        <option value="password-management">Password Security</option>
+                        <option value="phishing-prevention">Phishing Prevention</option>
+                        <option value="data-protection">Data Protection & Privacy</option>
+                        <option value="all">All Cybersecurity Topics</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Current Security Knowledge Level</label>
+                    <select id="experience" class="form-control" required>
+                        <option value="">Select your level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register for Access</button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="#">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${target}-tab`).classList.add('active');
+            });
+        });
+
+        // Quiz functionality
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const checkAnswerBtn = document.getElementById('check-answer');
+        const quizResult = document.getElementById('quiz-result');
+        
+        let selectedOption = null;
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                quizOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedOption = option;
+            });
+        });
+        
+        checkAnswerBtn.addEventListener('click', () => {
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+                quizResult.innerHTML = `
+                    <h3>Correct!</h3>
+                    <p>Password managers are the most secure option as they generate strong, unique passwords for each account and store them encrypted. This eliminates the need to remember multiple passwords while maintaining high security.</p>
+                `;
+                quizResult.style.display = 'block';
+            } else {
+                quizResult.innerHTML = `
+                    <h3>Not quite right</h3>
+                    <p>Password managers are the most secure option as they generate strong, unique passwords for each account and store them encrypted. Using the same password (even if complex) across multiple accounts puts all your accounts at risk if one is compromised.</p>
+                `;
+                quizResult.style.display = 'block';
+            }
+        });
+
+        // Checklist functionality
+        const checklistItems = document.querySelectorAll('.checklist-item input');
+        const saveChecklistBtn = document.getElementById('save-checklist');
+        const checklistResult = document.getElementById('checklist-result');
+        
+        checklistItems.forEach(item => {
+            item.addEventListener('change', function() {
+                if (this.checked) {
+                    this.parentElement.classList.add('completed');
+                } else {
+                    this.parentElement.classList.remove('completed');
+                }
+            });
+        });
+        
+        saveChecklistBtn.addEventListener('click', () => {
+            let checkedCount = 0;
+            checklistItems.forEach(item => {
+                if (item.checked) checkedCount++;
+            });
+            
+            checklistResult.innerHTML = `
+                <h3>Checklist Saved!</h3>
+                <p>You've completed ${checkedCount} out of ${checklistItems.length} security practices. ${checkedCount === checklistItems.length ? 'Excellent! You have all essential security practices in place.' : 'Continue working on the remaining items to improve your security.'}</p>
+            `;
+            checklistResult.style.display = 'block';
+        });
+
+        // Progress update functionality
+        const updateProgressBtn = document.getElementById('update-progress');
+        
+        updateProgressBtn.addEventListener('click', () => {
+            // Simulate progress update
+            document.getElementById('password-progress').style.width = '65%';
+            document.getElementById('threat-progress').style.width = '80%';
+            document.getElementById('data-progress').style.width = '50%';
+            
+            alert('Your security score has been updated! Continue learning to improve your cybersecurity knowledge.');
+        });
+
+        // Modal functionality
+        const registerBtn = document.getElementById('register-btn');
+        const registrationModal = document.getElementById('registration-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const registrationForm = document.getElementById('registration-form');
+        
+        registerBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'flex';
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === registrationModal) {
+                registrationModal.style.display = 'none';
+            }
+        });
+        
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for registering! You will receive an email with access to our Cybersecurity Awareness resources.');
+            registrationModal.style.display = 'none';
+            registrationForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

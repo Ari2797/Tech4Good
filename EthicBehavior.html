@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Online Behavior - Tech4Good</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-blue: #3B82F6;
+            --learning-teal: #14B8A6;
+            --safety-green: #10B981;
+            --warning-amber: #F59E0B;
+            --alert-red: #EF4444;
+            --dark-bg: #0A0A0A;
+            --darker-bg: #050505;
+            --card-bg: #1A1A1A;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-blue);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: var(--darker-bg);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .content-text {
+            padding-right: 20px;
+        }
+
+        .content-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Interactive Features */
+        .interactive-section {
+            background-color: var(--dark-bg);
+        }
+
+        .interactive-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-container {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-option.selected {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid var(--safety-green);
+        }
+
+        .scenario-container {
+            margin: 20px 0;
+        }
+
+        .scenario {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .scenario-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .scenario-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .scenario-option {
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scenario-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .scenario-option.selected {
+            background-color: rgba(59, 130, 246, 0.2);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .scenario-feedback {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--safety-green);
+        }
+
+        .principle-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .principle-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .principle-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .icon-green {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--safety-green);
+        }
+
+        .icon-teal {
+            background-color: rgba(20, 184, 166, 0.1);
+            color: var(--learning-teal);
+        }
+
+        .icon-blue {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .progress-container {
+            margin: 40px 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Registration CTA */
+        .registration-cta {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #111 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .registration-cta h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .registration-cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-fb:hover {
+            background-color: #1877F2;
+        }
+
+        .social-twitter:hover {
+            background-color: #1DA1F2;
+        }
+
+        .social-ig:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-tiktok:hover {
+            background-color: #000000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Tech4Good</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="digital-literacy.html">Digital Literacy</a></li>
+                    <li><a href="cybersecurity-awareness.html">Cybersecurity</a></li>
+                    <li><a href="index.html#learning">Learning Paths</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#contact" class="btn btn-secondary">Get Involved</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ethical Online Behavior</h1>
+                <p>Learn how to be a responsible digital citizen. Understand the principles of ethical online behavior, digital citizenship, and how to create a positive digital footprint.</p>
+                <div class="hero-buttons">
+                    <a href="#interactive" class="btn btn-primary">Explore Scenarios</a>
+                    <a href="#registration" class="btn btn-secondary">Get Ethics Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Ethical Online Behavior -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What is Ethical Online Behavior?</h2>
+                <p>Understanding your rights and responsibilities in digital spaces</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <h3>Being a Good Digital Citizen</h3>
+                    <p>Ethical online behavior refers to the moral principles and values that guide our actions and interactions in digital spaces. It encompasses how we communicate, share information, and respect others online.</p>
+                    <p>Just as we follow social norms in physical spaces, digital spaces require their own set of ethical guidelines to ensure respectful and constructive interactions.</p>
+                    <p>Ethical online behavior involves understanding the impact of our digital actions, respecting intellectual property, protecting privacy, and promoting positive digital communities.</p>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Digital citizenship concept">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Principles -->
+    <section class="content-section" style="background-color: var(--dark-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Principles of Ethical Online Behavior</h2>
+                <p>Fundamental guidelines for responsible digital citizenship</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Ethical decision making">
+                </div>
+                <div class="content-text">
+                    <h3>Guiding Your Digital Actions</h3>
+                    
+                    <div class="principle-card">
+                        <div class="principle-header">
+                            <div class="principle-icon icon-green">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Respect for Others</h4>
+                        </div>
+                        <p>Treat others online with the same respect you would show them in person. Avoid cyberbullying, harassment, and hate speech. Value diverse perspectives and engage in constructive dialogue.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-header">
+                            <div class="principle-icon icon-teal">
+                                <i class="fas fa-user-lock"></i>
+                            </div>
+                            <h4>Privacy & Consent</h4>
+                        </div>
+                        <p>Respect others' privacy and personal information. Don't share private information about others without their consent. Be mindful of what you share about yourself and others.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-header">
+                            <div class="principle-icon icon-blue">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4>Intellectual Property</h4>
+                        </div>
+                        <p>Respect copyrights, trademarks, and patents. Give proper credit when using others' work. Understand fair use and creative commons licensing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="interactive-section" id="interactive">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Ethics Exploration</h2>
+                <p>Test your understanding through scenarios and assessments</p>
+            </div>
+            
+            <div class="interactive-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="scenarios">Ethical Scenarios</div>
+                    <div class="tab" data-tab="quiz">Ethics Quiz</div>
+                    <div class="tab" data-tab="progress">Your Ethics Profile</div>
+                </div>
+                
+                <div class="tab-content active" id="scenarios-tab">
+                    <div class="quiz-container">
+                        <h3>Real-World Ethical Dilemmas</h3>
+                        <p>Consider these scenarios and select what you believe is the most ethical response:</p>
+                        
+                        <div class="scenario-container">
+                            <div class="scenario">
+                                <div class="scenario-question">You see a friend posting hurtful comments about someone on social media. What do you do?</div>
+                                <div class="scenario-options">
+                                    <div class="scenario-option" data-correct="true">Privately message your friend to express concern about their posts</div>
+                                    <div class="scenario-option" data-correct="false">Ignore it - it's not your business</div>
+                                    <div class="scenario-option" data-correct="false">Publicly comment to defend the person being targeted</div>
+                                    <div class="scenario-option" data-correct="false">Share the post to warn others about your friend's behavior</div>
+                                </div>
+                                <div class="scenario-feedback" id="scenario1-feedback">
+                                    <p><strong>Best approach:</strong> Privately messaging your friend shows concern while respecting their privacy. It gives them an opportunity to reflect without public shaming, which could escalate the situation.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario">
+                                <div class="scenario-question">You find a website that offers free downloads of paid software. What do you do?</div>
+                                <div class="scenario-options">
+                                    <div class="scenario-option" data-correct="false">Download the software - it's available for free</div>
+                                    <div class="scenario-option" data-correct="true">Avoid the website and use legitimate sources</div>
+                                    <div class="scenario-option" data-correct="false">Download but purchase the software later if you like it</div>
+                                    <div class="scenario-option" data-correct="false">Share the website with friends who might want the software</div>
+                                </div>
+                                <div class="scenario-feedback" id="scenario2-feedback">
+                                    <p><strong>Best approach:</strong> Using legitimate sources respects intellectual property rights and supports software developers. Pirated software often contains malware and violates copyright laws.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="check-scenarios">Check Your Responses</button>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="quiz-tab">
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="question">What is the most ethical approach to handling someone's private information shared with you online?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Share it only with close mutual friends</div>
+                            <div class="quiz-option" data-correct="true">Keep it confidential unless given explicit permission to share</div>
+                            <div class="quiz-option" data-correct="false">Share it if you think it would help the person</div>
+                            <div class="quiz-option" data-correct="false">Post it anonymously so no one knows it came from you</div>
+                        </div>
+                        <button class="btn btn-primary" id="check-answer">Check Answer</button>
+                        <div class="quiz-result" id="quiz-result">
+                            <h3>Correct!</h3>
+                            <p>Respecting privacy means keeping confidential information private unless you have explicit permission to share it. Even with good intentions, sharing someone's private information without consent violates their trust and right to privacy.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="progress-tab">
+                    <div class="progress-container">
+                        <h3>Your Ethical Online Behavior Profile</h3>
+                        <p>Track your understanding and application of ethical principles online.</p>
+                        
+                        <div class="progress-item">
+                            <p>Digital Respect & Empathy</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="respect-progress" style="width: 75%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Developing</span>
+                                <span>75%</span>
+                                <span>Exemplary</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Privacy Awareness</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="privacy-progress" style="width: 60%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Developing</span>
+                                <span>60%</span>
+                                <span>Exemplary</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Intellectual Property Respect</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="ip-progress" style="width: 55%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Developing</span>
+                                <span>55%</span>
+                                <span>Exemplary</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="update-progress">Update Ethics Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration CTA -->
+    <section class="registration-cta" id="registration">
+        <div class="container">
+            <h2>Want to Deepen Your Understanding of Digital Ethics?</h2>
+            <p>Register to access our complete Ethical Online Behavior resources, including case studies, community guidelines, and tools for ethical decision-making in digital spaces.</p>
+            <button class="btn btn-primary" id="register-btn">Register for Ethics Resources</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tech4Good</h3>
+                    <p>Empowering students and the community to use technology responsibly and effectively.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-ig"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-tiktok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="digital-literacy.html">Digital Literacy</a></li>
+                        <li><a href="cybersecurity-awareness.html">Cybersecurity</a></li>
+                        <li><a href="index.html#learning">Learning Paths</a></li>
+                        <li><a href="index.html#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Citizenship Guide</a></li>
+                        <li><a href="#">Ethical Decision Framework</a></li>
+                        <li><a href="#">Online Community Guidelines</a></li>
+                        <li><a href="#">Digital Footprint Management</a></li>
+                        <li><a href="#">Copyright & Fair Use</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@tech4good.org</li>
+                        <li><i class="fas fa-phone"></i> +60 7-453 7000</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Tech4Good. All rights reserved. | Promoting Digital Literacy and Safe Internet Use</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3 class="form-title">Register for Ethical Online Behavior Resources</h3>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Primary Ethics Interest</label>
+                    <select id="interest" class="form-control" required>
+                        <option value="">Select your interest</option>
+                        <option value="digital-citizenship">Digital Citizenship</option>
+                        <option value="online-communication">Online Communication Ethics</option>
+                        <option value="privacy-ethics">Privacy & Data Ethics</option>
+                        <option value="intellectual-property">Intellectual Property Rights</option>
+                        <option value="all">All Ethical Behavior Topics</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="role">Your Primary Role Online</label>
+                    <select id="role" class="form-control" required>
+                        <option value="">Select your role</option>
+                        <option value="student">Student</option>
+                        <option value="educator">Educator</option>
+                        <option value="professional">Professional</option>
+                        <option value="parent">Parent</option>
+                        <option value="community-member">Community Member</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register for Access</button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="#">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${target}-tab`).classList.add('active');
+            });
+        });
+
+        // Scenario functionality
+        const scenarioOptions = document.querySelectorAll('.scenario-option');
+        const checkScenariosBtn = document.getElementById('check-scenarios');
+        
+        scenarioOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selection from other options in the same scenario
+                const scenario = this.closest('.scenario');
+                const otherOptions = scenario.querySelectorAll('.scenario-option');
+                otherOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Select this option
+                this.classList.add('selected');
+                
+                // Show feedback for this scenario
+                const feedback = scenario.querySelector('.scenario-feedback');
+                feedback.style.display = 'block';
+            });
+        });
+
+        // Quiz functionality
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const checkAnswerBtn = document.getElementById('check-answer');
+        const quizResult = document.getElementById('quiz-result');
+        
+        let selectedOption = null;
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                quizOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedOption = option;
+            });
+        });
+        
+        checkAnswerBtn.addEventListener('click', () => {
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+                quizResult.innerHTML = `
+                    <h3>Correct!</h3>
+                    <p>Respecting privacy means keeping confidential information private unless you have explicit permission to share it. Even with good intentions, sharing someone's private information without consent violates their trust and right to privacy.</p>
+                `;
+                quizResult.style.display = 'block';
+            } else {
+                quizResult.innerHTML = `
+                    <h3>Not quite right</h3>
+                    <p>The most ethical approach is to keep private information confidential unless given explicit permission to share. Even sharing with close friends or with good intentions violates the person's trust and right to control their personal information.</p>
+                `;
+                quizResult.style.display = 'block';
+            }
+        });
+
+        // Progress update functionality
+        const updateProgressBtn = document.getElementById('update-progress');
+        
+        updateProgressBtn.addEventListener('click', () => {
+            // Simulate progress update
+            document.getElementById('respect-progress').style.width = '85%';
+            document.getElementById('privacy-progress').style.width = '75%';
+            document.getElementById('ip-progress').style.width = '70%';
+            
+            alert('Your ethics profile has been updated! Continue learning to strengthen your ethical decision-making skills.');
+        });
+
+        // Modal functionality
+        const registerBtn = document.getElementById('register-btn');
+        const registrationModal = document.getElementById('registration-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const registrationForm = document.getElementById('registration-form');
+        
+        registerBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'flex';
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === registrationModal) {
+                registrationModal.style.display = 'none';
+            }
+        });
+        
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for registering! You will receive an email with access to our Ethical Online Behavior resources.');
+            registrationModal.style.display = 'none';
+            registrationForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

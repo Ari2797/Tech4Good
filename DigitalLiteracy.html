@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Literacy - Tech4Good</title>
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-blue: #3B82F6;
+            --learning-teal: #14B8A6;
+            --safety-green: #10B981;
+            --warning-amber: #F59E0B;
+            --alert-red: #EF4444;
+            --dark-bg: #0A0A0A;
+            --darker-bg: #050505;
+            --card-bg: #1A1A1A;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-blue);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: var(--darker-bg);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .content-text {
+            padding-right: 20px;
+        }
+
+        .content-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Interactive Features */
+        .interactive-section {
+            background-color: var(--dark-bg);
+        }
+
+        .interactive-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-container {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-option.selected {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid var(--safety-green);
+        }
+
+        .progress-container {
+            margin: 40px 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--learning-teal));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Registration CTA */
+        .registration-cta {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, #111 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .registration-cta h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .registration-cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-fb:hover {
+            background-color: #1877F2;
+        }
+
+        .social-twitter:hover {
+            background-color: #1DA1F2;
+        }
+
+        .social-ig:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-tiktok:hover {
+            background-color: #000000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Tech4Good</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#learning">Learning Paths</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#contact" class="btn btn-secondary">Get Involved</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Digital Literacy</h1>
+                <p>Master the essential skills needed to navigate, evaluate, and create information using digital technologies. In today's connected world, digital literacy is as fundamental as reading and writing.</p>
+                <div class="hero-buttons">
+                    <a href="#interactive" class="btn btn-primary">Test Your Knowledge</a>
+                    <a href="#registration" class="btn btn-secondary">Get More Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Digital Literacy -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What is Digital Literacy?</h2>
+                <p>Understanding the foundation of digital skills in the modern world</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <h3>Beyond Basic Computer Skills</h3>
+                    <p>Digital literacy goes beyond knowing how to use a computer or smartphone. It encompasses the ability to find, evaluate, utilize, share, and create content using information technologies and the Internet.</p>
+                    <p>A digitally literate person can perform tasks effectively in a digital environment, with the skills to navigate, communicate, and problem-solve using technology.</p>
+                    <p>This includes understanding digital safety, recognizing credible information online, and using digital tools for learning, working, and socializing.</p>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Person using digital devices">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Components -->
+    <section class="content-section" style="background-color: var(--dark-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Components of Digital Literacy</h2>
+                <p>The essential skills that form a comprehensive digital literacy foundation</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Digital skills illustration">
+                </div>
+                <div class="content-text">
+                    <h3>Core Digital Competencies</h3>
+                    <p><strong>Information Literacy:</strong> The ability to find, evaluate, and use digital information effectively and ethically.</p>
+                    <p><strong>Communication & Collaboration:</strong> Using digital tools to communicate, share, and work with others.</p>
+                    <p><strong>Digital Creation:</strong> Producing digital content, from documents and presentations to videos and websites.</p>
+                    <p><strong>Privacy & Safety:</strong> Understanding how to protect personal information and navigate online spaces securely.</p>
+                    <p><strong>Problem-Solving:</strong> Using digital tools to identify and solve problems in various contexts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="interactive-section" id="interactive">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Learning</h2>
+                <p>Test your knowledge and track your progress</p>
+            </div>
+            
+            <div class="interactive-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="quiz">Digital Literacy Quiz</div>
+                    <div class="tab" data-tab="progress">Track Your Progress</div>
+                </div>
+                
+                <div class="tab-content active" id="quiz-tab">
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="question">What does "digital footprint" refer to?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">The trail of data you create while using the internet</div>
+                            <div class="quiz-option">The physical mark left by digital devices</div>
+                            <div class="quiz-option">The amount of digital storage you use</div>
+                            <div class="quiz-option">The speed of your internet connection</div>
+                        </div>
+                        <button class="btn btn-primary" id="check-answer">Check Answer</button>
+                        <div class="quiz-result" id="quiz-result">
+                            <h3>Correct!</h3>
+                            <p>Your digital footprint includes all the information about you that appears online. This can include social media activity, information on personal websites, browsing history, online subscriptions, photo galleries, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="progress-tab">
+                    <div class="progress-container">
+                        <h3>Your Digital Literacy Progress</h3>
+                        <p>Track how you're progressing in developing essential digital skills.</p>
+                        
+                        <div class="progress-item">
+                            <p>Information Literacy</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="info-progress" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Beginner</span>
+                                <span>65%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Digital Communication</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="comm-progress" style="width: 80%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Beginner</span>
+                                <span>80%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <p>Online Safety</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="safety-progress" style="width: 45%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>Beginner</span>
+                                <span>45%</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="update-progress">Update Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration CTA -->
+    <section class="registration-cta" id="registration">
+        <div class="container">
+            <h2>Want to Dive Deeper into Digital Literacy?</h2>
+            <p>Register to access our complete Digital Literacy course materials, including video tutorials, interactive exercises, and expert guidance to enhance your digital skills.</p>
+            <button class="btn btn-primary" id="register-btn">Register for Full Access</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tech4Good</h3>
+                    <p>Empowering students and the community to use technology responsibly and effectively.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-ig"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-tiktok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Our Mission</a></li>
+                        <li><a href="index.html#learning">Learning Paths</a></li>
+                        <li><a href="index.html#resources">Resources</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Literacy Guides</a></li>
+                        <li><a href="#">Cybersecurity Checklists</a></li>
+                        <li><a href="#">Lesson Plans for Educators</a></li>
+                        <li><a href="#">Research & Reports</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@tech4good.org</li>
+                        <li><i class="fas fa-phone"></i> +60 7-453 7000</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Universiti Tun Hussein Onn Malaysia, 86400 Parit Raja, Batu Pahat, Johor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Tech4Good. All rights reserved. | Promoting Digital Literacy and Safe Internet Use</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3 class="form-title">Register for Digital Literacy Resources</h3>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Primary Interest</label>
+                    <select id="interest" class="form-control" required>
+                        <option value="">Select your interest</option>
+                        <option value="basic-skills">Basic Digital Skills</option>
+                        <option value="online-safety">Online Safety & Privacy</option>
+                        <option value="digital-communication">Digital Communication</option>
+                        <option value="content-creation">Digital Content Creation</option>
+                        <option value="all">All of the above</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="goal">Learning Goal</label>
+                    <textarea id="goal" class="form-control" placeholder="What do you hope to achieve with digital literacy skills?" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register for Access</button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="#">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${target}-tab`).classList.add('active');
+            });
+        });
+
+        // Quiz functionality
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const checkAnswerBtn = document.getElementById('check-answer');
+        const quizResult = document.getElementById('quiz-result');
+        
+        let selectedOption = null;
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                quizOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedOption = option;
+            });
+        });
+        
+        checkAnswerBtn.addEventListener('click', () => {
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+                quizResult.innerHTML = `
+                    <h3>Correct!</h3>
+                    <p>Your digital footprint includes all the information about you that appears online. This can include social media activity, information on personal websites, browsing history, online subscriptions, photo galleries, and more.</p>
+                `;
+                quizResult.style.display = 'block';
+            } else {
+                quizResult.innerHTML = `
+                    <h3>Not quite right</h3>
+                    <p>Your digital footprint refers to the trail of data you create while using the internet. It includes your social media activity, browsing history, online subscriptions, and any other information about you that appears online.</p>
+                `;
+                quizResult.style.display = 'block';
+            }
+        });
+
+        // Progress update functionality
+        const updateProgressBtn = document.getElementById('update-progress');
+        
+        updateProgressBtn.addEventListener('click', () => {
+            // Simulate progress update
+            document.getElementById('info-progress').style.width = '75%';
+            document.getElementById('comm-progress').style.width = '85%';
+            document.getElementById('safety-progress').style.width = '60%';
+            
+            alert('Your progress has been updated! Continue learning to improve your skills.');
+        });
+
+        // Modal functionality
+        const registerBtn = document.getElementById('register-btn');
+        const registrationModal = document.getElementById('registration-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const registrationForm = document.getElementById('registration-form');
+        
+        registerBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'flex';
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            registrationModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === registrationModal) {
+                registrationModal.style.display = 'none';
+            }
+        });
+        
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for registering! You will receive an email with access to our Digital Literacy resources.');
+            registrationModal.style.display = 'none';
+            registrationForm.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
